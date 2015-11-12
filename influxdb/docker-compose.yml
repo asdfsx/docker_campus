@@ -1,0 +1,11 @@
+influxdb:
+  image: tutum/influxdb
+  ports:
+    - 8083:8083
+    - 8086:8086
+  expose:
+    - 8090
+    - 8099
+  volumes:
+    - ./config.toml:/config/config.toml
+  restart: always

@@ -1,0 +1,33 @@
+zookeeper:
+  extends:
+    file: zookeeper/docker-compose.yml
+    service: zookeeper
+
+mesosmaster:
+  extends:
+    file: mesos-master/docker-compose.yml
+    service: mesosmaster
+
+mesosslave:
+  extends:
+    file: mesos-slave/docker-compose.yml
+    service: mesosslave
+
+marathon:
+  extends:
+    file: mesos-marathon/docker-compose.yml
+    service: marathon
+  links:
+    - zookeeper:zookeeper
+
+chronos:
+  extends:
+    file: mesos-chronos/docker-compose.yml
+    service: chronos
+  links:
+    - zookeeper:zookeeper
+
+mesosdns:
+  extends:
+    file: mesos-dns/docker-compose.yml
+    service: mesosdns

@@ -1,0 +1,29 @@
+redis:
+  image: sameersbn/redis
+  volumes:
+    - /root/docker-data/gitlab/redis:/var/lib/redis
+mysql:
+  image: sameersbn/mysql
+  volumes:
+    - /root/docker-data/gitlab/mysql:/var/lib/mysql
+  environment:
+    DB_NAME: gitlabhq_production
+    DB_USER: gitlab
+    DB_PASS: password
+gitlab:
+  image: sameersbn/gitlab
+  ports:
+    - "10080:80"
+    - "10022:22"
+  links:
+    - redis:redisio
+    - mysql:mysql
+  environment:
+    GITLAB_HOST: gitlab.engine.cn
+    GITLAB_SECRETS_DB_KEY_BASE: 1234567890
+    GITLAB_SSH_PORT: 10022
+    GITLAB_PORT: 443
+    GITLAB_HTTPS: true
+    SSL_SELF_SIGNED: true
+  volumes:
+    - /root/docker-data/gitlab/gitlab:/home/git/data

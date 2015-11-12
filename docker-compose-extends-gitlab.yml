@@ -1,0 +1,56 @@
+nginx:
+  extends:
+    file: nginx/docker-compose.yml
+    service: nginx
+  links:
+    - registry:registry
+    - regquery:regquery
+    - gitlab:gitlab
+  volumes:
+    - ./nginx/conf.d/domain.key:/etc/nginx/conf.d/domain.key
+    - ./nginx/conf.d/domain.crt:/etc/nginx/conf.d/domain.crt
+    - ./registry/conf.d/registry.conf:/etc/nginx/conf.d/registry.conf
+    - ./registry-query/conf.d/reg.query.engine.conf:/etc/nginx/conf.d/reg.query.engine.conf
+    - ./gitlab/conf.d/gitlab.conf:/etc/nginx/conf.d/gitlab.conf
+
+registry:
+  extends:
+    file: registry/docker-compose.yml
+    service: registry
+
+regquery:
+  extends:
+    file: registry-query/docker-compose.yml
+    service: web
+  links:
+    - registry:registry
+
+redis:
+  image: sameersbn/redis
+  volumes:
+    - /root/docker-data/gitlab/redis:/var/lib/redis
+mysql:
+  image: sameersbn/mysql
+  volumes:
+    - /root/docker-data/gitlab/mysql:/var/lib/mysql
+  environment:
+    DB_NAME: gitlabhq_production
+    DB_USER: gitlab
+    DB_PASS: password
+gitlab:
+  image: sameersbn/gitlab
+  ports:
+    - "10080:80"
+    - "10022:22"
+  links:
+    - redis:redisio
+    - mysql:mysql
+  environment:
+    GITLAB_HOST: gitlab.engine.cn
+    GITLAB_SECRETS_DB_KEY_BASE: 1234567890
+    GITLAB_SSH_PORT: 10022
+    GITLAB_PORT: 443
+    GITLAB_HTTPS: true
+    SSL_SELF_SIGNED: true
+  volumes:
+    - /root/docker-data/gitlab/gitlab:/home/git/data
