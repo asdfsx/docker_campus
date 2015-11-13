@@ -1,0 +1,16 @@
+rethinkdb:
+    image: rethinkdb
+    ports:
+        - "8080"
+        - "28015"
+        - "29015"
+    restart: always
+
+controller:
+    image: shipyard/shipyard
+    command: " -D server --rethinkdb-addr rethinkdb:28015 -d tcp://192.168.169.132:2370"
+    links:
+        - rethinkdb
+    ports:
+        - "8080:8080"
+    restart: always
