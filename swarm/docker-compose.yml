@@ -1,0 +1,9 @@
+swarmnode:
+  image: swarm
+  command: join --addr=192.168.169.132:2375 consul://192.168.169.132:8500/swarm1
+
+swarmmanager:
+  image: swarm
+  ports:
+    - 2370:2375
+  command: manage consul://192.168.169.132:8500/swarm1
