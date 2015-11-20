@@ -1,0 +1,2 @@
+#!/bin/sh
+docker build -t asdfsx/mesos-marathon:0.13.0 .

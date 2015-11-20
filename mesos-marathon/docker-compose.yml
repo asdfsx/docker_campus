@@ -1,5 +1,5 @@
 marathon:
-  image: mesoscloud/marathon
+  image: asdfsx/mesos-marathon:0.13.0
   ports:
     - 7070:7070
   environment:
