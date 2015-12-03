@@ -1,0 +1,7 @@
+nginx:
+  image: "nginx:1.9"
+  ports:
+    - 80:80
+  volumes:
+    - ./jre-7u76-linux-x64.tar.gz:/download/jre-7u76-linux-x64.tar.gz
+    - ./conf.d/download.conf:/etc/nginx/conf.d/download.conf

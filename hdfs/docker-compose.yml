@@ -1,0 +1,7 @@
+hdfs:
+  image: mesos_jdk:0.24.1_1.7
+  net: host
+  volumes:
+    - hdfs-mesos-0.1.5:/hdfs-mesos-0.1.5
+  command: bin/hdfs-mesos
+  
