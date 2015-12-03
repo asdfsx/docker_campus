@@ -1,6 +1,6 @@
 mesosdns:
-  image: mesosphere/mesos-dns
+  image: asdfsx/mesos-dns:0.5.1-alpine
   net: host
   volumes:
     - ./config.json:/config.json
-  command: /mesos-dns -config=/config.json
+  command: /app/mesos-dns -config=/config.json
