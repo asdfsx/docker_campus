@@ -43,3 +43,18 @@ then we can boot hdfs by using this image
 docker run -it -v "$PWD"/hdfs-mesos-0.1.5:/hdfs-mesos-0.1.5 --net host --workdir /hdfs-mesos-0.1.5 mesos_jdk:0.24.1_1.7 bin/hdfs-mesos
 ```
 
+###Teardown hdfs
+To close hdfs, on mesos 0.24.0 we need to use new api
+first we make a json file: teardown.json  
+
+```sh
+{
+  "framework_id"    :{"value" :"20151202-033605-604154048-5050-1-0001"},  
+  "type"            : "TEARDOWN"  
+}
+```
+
+then use curl to send data into mesos
+```sh
+curl -X POST -H "Content-Type: application/json" http://mesos_36:5050/api/v1/scheduler -d@teardown.json
+```
