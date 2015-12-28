@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+  <property>
+    <name>mesos.hdfs.jre-url</name>
+    <description>The jre download by mesos container</description>
+    <value>http://192.168.2.36/jre-7u76-linux-x64.tar.gz</value>
+  </property> 
+  <property>
+    <name>mesos.hdfs.journalnode.count</name>
+    <value>2</value>
+  </property>
+    
+  <property>
+    <name>mesos.hdfs.namenode.cpus</name>
+    <value>0.1</value>
+  </property>
+
+  <property>
+    <name>mesos.hdfs.datanode.cpus</name>
+    <value>0.1</value>
+  </property>
+    
+  <property>
+    <name>mesos.hdfs.journalnode.cpus</name>
+    <value>0.1</value>
+  </property>
+    
+  <property>
+    <name>mesos.hdfs.executor.cpus</name>
+    <value>0.1</value>
+  </property>
+    
+  <property>
+    <name>mesos.hdfs.data.dir</name>
+    <description>The primary data directory in HDFS</description>
+    <value>/data/hdfs/data</value>
+  </property>
+
+    <!-- Uncomment this to enable backup
+    <property>
+      <name>mesos.hdfs.backup.dir</name>
+      <description>Backup dir for HDFS</description>
+      <value>/tmp/nfs</value>
+    </property>
+    -->
+
+  <property>
+    <name>mesos.hdfs.framework.mnt.path</name>
+    <value>/opt/mesosphere</value>
+    <description>This is the default for all DCOS installs</description>
+  </property>
+
+  <property>
+    <name>mesos.hdfs.state.zk</name>
+    <value>zookeeper:2181</value>
+    <description>See the Mesos DNS config file for explanation for this</description>
+  </property>
+
+  <property>
+    <name>mesos.master.uri</name>
+    <value>zk://zookeeper:2181/mesos</value>
+    <description>See the Mesos DNS config file for explanation for this</description>
+  </property>
+
+  <property>
+    <name>mesos.hdfs.zkfc.ha.zookeeper.quorum</name>
+    <value>zookeeper:2181</value>
+    <description>See the Mesos DNS config file for explanation for this</description>
+  </property>
+
+  <property>
+    <name>mesos.hdfs.mesosdns</name>
+    <value>true</value>
+    <description>All DCOS installs come with mesos DNS to maintain static configurations</description>
+  </property>
+
+  <property>
+    <name>mesos.hdfs.native-hadoop-binaries</name>
+    <value>flase</value>
+    <description>DCOS comes with pre-distributed HDFS binaries in a single-tenant environment</description>
+  </property>
+
+  <property>
+    <name>mesos.hdfs.framework.mnt.path</name>
+    <description>Mount location (if mesos.hdfs.native-hadoop-binaries is marked false)</description>
+    <value>/opt/mesosphere</value>
+  </property>
+
+  <property>
+    <name>mesos.hdfs.jvm.overhead</name>
+    <description>Multiplier on resources reserved in order to account for JVM allocation</description>
+    <value>1</value>
+  </property>
+  <property>
+    <name>mesos.hdfs.hadoop.heap.size</name>
+    <value>64</value>
+  </property>
+  <property>
+    <name>mesos.hdfs.namenode.heap.size</name>
+    <value>64</value>
+  </property>
+  <property>
+    <name>mesos.hdfs.datanode.heap.size</name>
+    <value>64</value>
+  </property>
+  <property>
+    <name>mesos.hdfs.executor.heap.size</name>
+    <value>64</value>
+  </property>
+  <property>
+    <name>mesos.hdfs.executor.cpus</name>
+    <value>0.1</value>
+  </property>
+  <property>
+    <name>mesos.hdfs.namenode.cpus</name>
+    <value>0.1</value>
+  </property>
+  <property>
+    <name>mesos.hdfs.journalnode.cpus</name>
+    <value>0.1</value>
+  </property>
+  <property>
+    <name>mesos.hdfs.datanode.cpus</name>
+    <value>0.1</value>
+  </property>
+  <property>
+    <name>mesos.hdfs.user</name>
+    <value>root</value>
+  </property>
+  <property>
+    <name>mesos.hdfs.role</name>
+    <value>*</value>
+  </property>
+   
+  <property>    
+    <name>mesos.hdfs.datanode.exclusive</name>
+    WARNING-It is not advisable to run the datanode on same slave because of performance issues
+    <description>Whether to run the datanode on slave different from namenode and journal nodes</description>
+    <value>true</value>
+  </property>
+  
+</configuration>

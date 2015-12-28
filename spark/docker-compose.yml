@@ -1,0 +1,7 @@
+spark:
+  image: mesos-spark:1.5.2
+  net: host
+  volumes:
+    - ./spark.conf:/opt/spark/conf/spark-defaults.conf
+  command: /opt/spark/bin/spark-class org.apache.spark.deploy.mesos.MesosClusterDispatcher
+  

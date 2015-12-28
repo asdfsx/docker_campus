@@ -3,6 +3,5 @@ nginx:
   ports:
     - 80:80
   volumes:
-    - ./jre-7u76-linux-x64.tar.gz:/download/jre-7u76-linux-x64.tar.gz
     - ./spark-1.5.2-bin-hadoop2.6.tgz:/download/spark-1.5.2-bin-hadoop2.6.tgz
     - ./conf.d/download.conf:/etc/nginx/conf.d/download.conf
