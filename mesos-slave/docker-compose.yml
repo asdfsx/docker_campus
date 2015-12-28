@@ -8,4 +8,5 @@ mesosslave:
     - /sys/fs/cgroup:/sys/fs/cgroup
     - /var/run/docker.sock:/var/run/docker.sock
     - /tmp/mesos:/tmp/mesos
+    - /data/mesos:/data/mesos
   privileged: true
