@@ -10,6 +10,7 @@ nginx:
     - ./nginx/conf.d/domain.crt:/etc/nginx/conf.d/domain.crt
     - ./registry/conf.d/registry.conf:/etc/nginx/conf.d/registry.conf
     - ./registry-query/conf.d/reg.query.engine.conf:/etc/nginx/conf.d/reg.query.engine.conf
+    - /tmp:/tmp
 
 registry:
   extends:
