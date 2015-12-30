@@ -1,0 +1,2 @@
+#!/bin/sh
+docker build -t asdfsx/mesos-slave:0.26.0 .
