@@ -1,11 +1,12 @@
 mesosslave:
-  image: asdfsx/mesos-slave:0.26.0
+  image: asdfsx/mesos-slave:0.24.1
   net: host
   environment:
     - MESOS_IP=0.0.0.0
     - MESOS_MASTER=zk://zookeeper:2181/mesos
     - MESOS_CONTAINERIZERS=docker,mesos
     - MESOS_EXECUTOR_REGISTRATION_TIMEOUT=5mins
+    - MESOS_ISOLATION=cgroups/cpu,cgroups/mem
   volumes:
     - /sys/fs/cgroup:/sys/fs/cgroup
     - /var/run/docker.sock:/var/run/docker.sock

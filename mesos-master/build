@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build -t asdfsx/mesos-master:0.26.0 .
+docker build -t asdfsx/mesos-master:0.24.1 .

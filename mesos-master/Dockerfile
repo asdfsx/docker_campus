@@ -1,4 +1,4 @@
-From asdfsx/mesos-base:0.26.0
+From asdfsx/mesos-base:0.24.1
 MAINTAINER asdfsx <asdfsx@google.com>
 
 CMD ["/usr/sbin/mesos-master"]

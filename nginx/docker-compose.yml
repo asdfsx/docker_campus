@@ -3,3 +3,6 @@ nginx:
   ports:
     - 80:80
     - 443:443
+  volumes:
+    - ./conf.d/download.conf:/etc/nginx/conf.d/download.conf
+    - ./download:/download

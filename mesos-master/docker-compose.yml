@@ -1,5 +1,5 @@
 mesosmaster:
-  image: asdfsx/mesos-master:0.26.0
+  image: asdfsx/mesos-master:0.24.1
   net: host
   environment:
     - MESOS_HOSTNAME_LOOKUP=false
