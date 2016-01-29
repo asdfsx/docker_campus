@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e -x
+
+GO_VER=${GO_VER:-1.5}
+
+#mkdir go
+
+export GOPATH="$PWD/go"
+
+#git clone https://github.com/influxdb/influxdb "$PWD"/go/src/github.com/influxdb/influxdb
+docker run -it -v "${GOPATH}":/go -e "GOPATH=/go" -w /go/src/github.com/influxdb/influxdb/ golang:$GO_VER sh -c 'go get -u -f -t ./...'
+
+cd go/src/github.com/influxdb/influxdb/
+
+sh ./build-docker.sh
